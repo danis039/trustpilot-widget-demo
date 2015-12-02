@@ -1,0 +1,457 @@
+// Import Compass reset
+@import "compass/reset";
+
+// Import Compass modules
+@import "compass/css3";
+
+// Import custom partials
+@import "colors";
+@import "grid";
+@import "layout";
+@import "typography";
+
+// Import custom mixins
+@import "mixins";
+
+
+
+// Base Elements
+
+*, *:before, *:after {
+	@include box-sizing();
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: $color-inverse;
+	color: $color-default;
+	line-height: $line-height-base;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	font-weight: $font-weight-regular;
+}
+
+hr {
+	border: 0;
+  	border-top: 1px solid $color-border;
+	margin-top: $padding-default * 1.5;
+	margin-bottom: $padding-default * 1.5;
+}
+
+p {
+	margin-bottom: $padding-default / 2;
+}
+
+
+
+// Typography
+
+h1 {
+	font-family: $font-family-headings;
+	font-size: $font-size-h1;
+	font-weight: $font-weight-headings;
+
+	@include responsive(screen-mini) { font-size: $font-size-h1-mini; }
+	@include responsive(screen-xs) { font-size: $font-size-h1-xs; }
+	@include responsive(screen-sm) { font-size: $font-size-h1-sm; }
+}
+
+h2 {
+	font-size: $font-size-h2;
+	line-height: $line-height-headings;
+
+	@include responsive(screen-mini) { font-size: $font-size-h2-mini; }
+	@include responsive(screen-xs) { font-size: $font-size-h2-xs; }
+	@include responsive(screen-sm) { font-size: $font-size-h2-sm; }
+}
+
+h3 {
+	font-size: $font-size-h3;
+	font-weight: $font-weight-headings;
+	line-height: $line-height-headings;
+	margin-bottom: 5px;
+
+	@include responsive(screen-mini) { font-size: $font-size-h3-mini; }
+	@include responsive(screen-xs) { font-size: $font-size-h3-xs; }
+	@include responsive(screen-sm) { font-size: $font-size-h3-sm; }
+}
+
+.color-gray {
+	color: $color-gray-dark;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-xs {
+	font-size: $font-size-xs;
+}
+
+.text-small {
+	font-size: $font-size-small;
+}
+
+.text-light {
+	font-weight: $font-weight-light;
+}
+
+.text-regular {
+	font-weight: $font-weight-regular;
+}
+
+.text-semibold {
+	font-weight: $font-weight-semibold;
+}
+
+.text-bold {
+	font-weight: $font-weight-bold;
+}
+
+
+
+// Grid
+
+.col-md-4 {
+	min-height: 1px;
+	padding-left: $grid-gutter-width / 2;
+	padding-right: $grid-gutter-width / 2;
+	position: relative;
+
+	@include responsive(screen-md) { 
+		float: left;
+		width: 33.33333333%; 
+	}
+}
+
+.container {
+	margin-left: auto;
+  	margin-right: auto;
+  	padding-left: $grid-gutter-width / 2;
+  	padding-right: $grid-gutter-width / 2;
+
+  	@include responsive(screen-sm) { width: $container-sm; }
+  	@include responsive(screen-md) { width: $container-md; }
+  	@include responsive(screen-lg) { width: $container-lg; }
+
+  	&:before, &:after {
+	  	content: " ";
+	  	display: table;
+	}
+
+	&:after {
+	  	clear: both;
+	}
+}
+
+
+
+// Page Structure
+
+.block-padding {
+	padding: $padding-default;
+}
+
+.block-padding-medium {
+	padding: ($padding-default * 1.25) $padding-default;
+}
+
+.block-padding-large {
+	padding: ($padding-default * 2) $padding-default;
+}
+
+.block-padding-xl {
+	padding: ($padding-default * 4) $padding-default;
+}
+
+.block-margin-top-xs {
+	margin-top: $padding-default / 4;
+}
+
+.block-margin-top {
+	margin-top: $padding-default;
+}
+
+.block-margin-top-medium {
+	margin-top: $padding-default * 1.25;
+}
+
+.block-margin-top-large {
+	margin-top: $padding-default * 2;
+}
+
+.img-circle {
+	@include border-radius(50%);
+}
+
+.section-padding {
+	padding-bottom: $padding-section * 3.5;
+	padding-top: $padding-section;	
+
+	@include responsive(screen-sm) { 
+		padding-bottom: $padding-section * 1.75;
+		padding-top: $padding-section * 1.5;	
+	}
+}
+
+
+
+// Buttons
+
+.btn {
+	background-image: none;
+  	border: 1px solid transparent;
+  	color: $color-inverse;
+	cursor: pointer;
+    display: inline-block;
+    font-size: $font-size-base;
+  	font-weight: $font-weight-semibold;
+    line-height: $line-height-base;
+  	text-align: center;
+  	text-transform: uppercase;
+  	touch-action: manipulation;
+  	vertical-align: middle;
+  	white-space: nowrap;
+
+  	@include user-select(none);
+}
+
+.btn-circle {
+	border: 5px solid $color-inverse;
+	@include border-radius(50%);
+	height: 64px;
+	padding: 11px;
+	width: 64px;
+
+	.fa {
+		font-size: 1.8em;
+	}
+
+	@include single-transition(all, 0.3s, linear);
+
+	&:hover, &:focus, &:active {
+		border-color: #D2E2CB;
+	}
+}
+
+.btn-default {
+    background-color: $color-brand;
+    border-color: $color-brand;
+    @include border-radius(4px);
+    padding: 13px 22px;
+    width: 280px;
+
+    &:hover, &:focus, &:active {
+  		@include btn-lightener($color-brand);
+  	}
+}
+
+
+
+// Main elements
+
+#content-wrap {
+	@include transition();
+
+	&.overlay {
+		@include opacity(0.5);
+		position: fixed;
+		right: 0;
+		left: 0;
+	}
+}
+
+#widget {
+	background-color: $color-inverse;
+	border-left: 1px solid $color-gray;
+	display: none;
+	padding: ($padding-default * 2) $padding-default 0px $padding-default;
+	position: absolute;
+	right: -320px;
+	top: 0;
+	width: 320px;
+	z-index: 1000;
+
+	&.open {
+		display: block;
+		right: 0;
+	}
+
+	.close {
+		color: $color-gray;
+		display: inline-block;
+		
+		&.close-bottom {
+			padding: $padding-default;
+			text-transform: uppercase;
+
+			.fa {
+				font-size: 1.2em;
+			}
+		}
+
+		&.close-top {
+			padding: 15px;
+			position: absolute;
+			right: 0;
+			top: 0;
+
+			.fa {
+				font-size: 2em;
+			}
+		}
+
+		&:hover, &:focus, &:active {
+			color: $color-gray-dark;
+		}
+	}
+
+	.logo {
+		margin-left: 18px;
+		width: 94px;
+	}
+}
+
+
+
+// Other elements
+
+.badge-wrap {
+	float: right;
+	
+	a {
+		display: inline-block;
+		margin-top: 34px;
+		@include responsive(screen-sm) { margin-top: 26px; }
+		@include single-transition(opacity, 1s, linear);
+
+		&:hover {
+			@include opacity(0.7);
+		}
+
+		#badge {
+			width: 110px;
+			@include responsive(screen-sm) { width: 160px; }
+		}
+	}
+}
+
+.brand {
+	float: left;
+	font-size: 30px;
+	font-family: $font-family-headings;
+	font-weight: $font-weight-headings;
+	margin-top: 30px;
+
+	@include responsive(screen-sm) { 
+		font-size: 36px; 
+		margin-top: 24px;
+	}
+}
+
+.instructions {
+	h2 {
+		font-weight: $font-weight-regular;
+		margin: 30px auto 45px auto;
+		width: 270px;
+	}
+
+	.fa {
+		font-size: 7.2em;
+	}
+}
+
+.footer {
+	background-color: $color-bg-dark;
+	color: $color-inverse;
+	font-family: $font-family-headings;
+	font-weight: $font-weight-headings;
+	height: 104px;
+	text-align: center;
+}
+
+.header {
+	@include background-image("bg-unsplash-woods", "jpg", $color-bg-dark);
+	height: 340px;
+	padding-top: 45px;
+	text-align: center;
+
+	h1, h2 {
+		color: $color-inverse;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 500px;
+	}
+
+	.buttons {
+		display: inline-block;
+
+		a {
+			margin-left: 3px;
+			margin-right: 3px;
+		}
+	}
+}
+
+.nav {
+	height: 104px;
+}
+
+.rating-main {
+	margin-bottom: 8px;
+	margin-top: 15px;
+	width: 260px;
+}
+
+.review {
+	.author {
+		margin-left: 120px;
+	}
+
+	.date {
+		margin: 6px 10px 25px 0px;
+		text-align: right;
+	}
+
+	.message-box {
+		display: inline-block;
+		margin-top: 25px;
+		position: relative;
+
+		.message-arrow {
+			border-width: 0 12px 15px;
+		    border-color: transparent;
+		    border-bottom-color: $color-bg-light;
+		    border-style: solid;
+		    height: 0;
+			left: 44px;
+			margin-left: -5px;
+			position: absolute;
+		    top: -15px;
+		    width: 0;
+		}
+
+		.message {
+			background-color: $color-bg-light;
+			@include border-radius(4px);
+			line-height: $line-height-headings;
+		}
+	}
+
+	.photo {
+		float: left;
+	}
+
+	.rating { 
+		width: 137px;
+	}
+
+	.reviews-count { 
+		font-size: $font-size-smaller; 
+		margin-bottom: 5px;
+		margin-top: 7px;
+	}
+}

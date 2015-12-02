@@ -1,0 +1,50 @@
+// Backgrounds
+%background-cover {
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@mixin background-image($image-name, $extension, $fallback-color) {
+	background-color: $fallback-color;
+	background-image: url("../images/" + $image-name + "." + $extension);
+	@extend %background-cover;
+}
+
+
+// Buttons
+@mixin btn-lightener($base-color, $amount: 5%) {
+	background-color: lighten($base-color, $amount);
+	border-color: lighten($base-color, $amount);
+}
+
+@mixin btn-darkener($base-color, $amount: 2%) {
+	background-color: darken($base-color, $amount);
+	border-color: darken($base-color, $amount);
+}
+
+
+// Borders
+@mixin border-default($color) {
+	border: 1px solid $color;
+}
+
+
+// Media Queries
+@mixin responsive($media) {
+  @if $media == screen-mini {
+    @media only screen and (min-width: $screen-mini) { @content; }
+  }
+  @else if $media == screen-xs {
+    @media only screen and (min-width: $screen-xs) { @content; }
+  }
+  @else if $media == screen-sm {
+    @media only screen and (min-width: $screen-sm) { @content; }
+  }
+  @else if $media == screen-md {
+    @media only screen and (min-width: $screen-md) { @content; }
+  }
+  @else if $media == screen-lg {
+    @media only screen and (min-width: $screen-lg) { @content; }
+  }
+}

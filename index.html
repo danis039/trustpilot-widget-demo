@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Daniel Silva">
+    <title>Trustpilot widget demo by Daniel Silva</title>
+    <!-- Styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Visible content -->
+    <div id="content-wrap">
+      <!-- Navigation and main header -->
+      <header>
+        <!-- Navigation -->
+        <nav class="container nav">
+          <div class="brand">takfordet.</div>
+          <div class="badge-wrap">
+            <a href="#"><img id="badge" src="images/badge.png" alt="Trustpilot reviews badge" title="View Trustpilot reviews"></a>
+          </div>
+        </nav>
+        <!-- Main header -->
+        <div class="header">
+          <div class="container">
+            <h1>takfordet.</h1>
+            <h2 class="text-light">A simple responsive off-canvas widget demo designed and developed by Daniel Silva for the folks at Trustpilot.</h2>
+            <div class="buttons block-margin-top-medium">
+              <a class="btn btn-circle" href="https://www.linkedin.com/in/danis039" target="_blank"><i class="fa fa-linkedin"></i></a>
+              <a class="btn btn-circle" href="mailto:daniel.js.dasilva@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Instructions -->
+      <section class="instructions container text-center section-padding">
+        <div class="col-md-4">
+          <i class="fa fa-search"></i>
+          <h2>1. Locate the Trustpilot reviews badge on the header.</h2>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-hand-o-up"></i>
+          <h2>2. Click or tap the mentioned badge to show the widget.</h2>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-reply"></i>
+          <h2>3. Appreciate the author’s effort and reach back to him.</h2>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="footer block-padding">
+        takfordet. vaersgo.
+      </footer>
+    </div>
+    <!-- Trustpilot widget (hidden) -->
+    <aside id="widget">
+      <a class="close close-top" href="#"><i class="fa fa-angle-right"></i></a>
+      <header class="text-center">
+        <div class="text-center text-bold">Our clients love us! <i class="fa fa-heart"></i></div>
+        <div><img src="images/rating-5.png" class="rating-main" alt="Rating: 4.8 out of 5" title="Rating: 4.8 out of 5"></div>
+        <div class="text-small text-regular">103 trusted reviews <a href="http://www.trustpilot.com" target="_blank"><img src="images/trustpilot-logo.png" class="logo"></a></div>
+        <hr>
+      </header>
+      <!-- All reviews (foreach using KnockoutJS) -->
+      <div class="reviews" data-bind="foreach: reviewList">
+        <article class="review">
+          <header>
+            <img data-bind="attr: { src: photo, alt: '' }" class="img-circle photo">
+            <div class="author">
+              <div class="name text-semibold" data-bind="text: author"></div>
+              <div class="location text-small" data-bind="text: location"></div>
+              <div class="reviews-count text-smaller"><span data-bind="text: reviewsCount"></span> reviews</div>
+              <img class="rating" data-bind="attr: { src: 'images/rating-' + rating + '.png', alt: ratingText, title: ratingText }">
+            </div>
+          </header>
+          <div class="message-box">
+            <div class="message-arrow"></div>
+            <div class="message block-padding">
+              <h3 data-bind="text: title"></h3>
+              <p class="text-small" data-bind="text: body"></p>
+            </div>
+          </div>
+          <div class="date text-xs color-gray">Posted 1 day ago</div>
+        </article>
+      </div>
+      <footer class="text-center">
+        <a class="btn btn-default block-margin-top-medium" href="http://www.trustpilot.com" target="_blank" role="button">View more reviews</a> 
+        <a class="close close-bottom text-bold" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i> Close</a>
+      </footer>
+    </aside>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- KnockoutJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
